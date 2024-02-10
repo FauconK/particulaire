@@ -1,0 +1,11 @@
+#!/bin/bash
+
+j=34
+
+for i in *.png ;
+ do
+   echo $i
+   mv $i im$j.png
+   j=`expr $j + 1`
+
+ done
