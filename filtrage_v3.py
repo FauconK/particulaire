@@ -13,7 +13,7 @@ from sklearn.datasets import load_sample_image
 from sklearn.utils import shuffle
 import os
 import time as t
-import cv2
+import csv
 
 def multinomial_resample(weights):
 
@@ -149,7 +149,6 @@ zoneAT=selectionner_zone()
 new_im,kmeans,histo_ref=calcul_histogramme(im,zoneAT,Nb)
 
 def calcul_de_vraissemblance(histo, histo_ref,zone):
-    #On teste si la zone est bien partiellement dans l'image, dans le cas contraire on renverra une vraissemblance très faible pour que la particule correspondante soit annihilée
     if zone[0] > 500 or zone[0] < - zone[2] or zone[1] > 500 or zone[1] < - zone[3]:
         return(0)
 
@@ -191,7 +190,7 @@ def filtrage_particulaire():
 
 x_est,x = filtrage_particulaire() #x_est est la trajectoire estimée
 
-wait = input("Press Enter to continue.") #Ce ligne met en pause le programme jusqu'à que l'utilisateur clique sur entrée
+wait = input("Press Enter to continue.") 
 plt.close()
 
 #On va maintenant afficher les images une par une
